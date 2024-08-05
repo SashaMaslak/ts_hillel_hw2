@@ -10,7 +10,7 @@ enum GroupStatus {
   INACTIVE = "Inactive",
 }
 
-class Lecturer {
+interface Lecturer {
   name: string
   surname: string
   position: Position
@@ -18,24 +18,6 @@ class Lecturer {
   experience: number
   courses: string[]
   contacts: { email?: string; phone?: string }
-
-  constructor(
-    name: string,
-    surname: string,
-    position: Position,
-    company: string,
-    experience: number,
-    courses: string[],
-    contacts: { email?: string; phone?: string }
-  ) {
-    this.name = name
-    this.surname = surname
-    this.position = position
-    this.company = company
-    this.experience = experience
-    this.courses = courses
-    this.contacts = contacts
-  }
 }
 
 class Area {
@@ -219,9 +201,7 @@ class School {
   }
 
   addLecturer(lecturer: Lecturer): void {
-    if (lecturer instanceof Lecturer) {
-      this._lecturers.push(lecturer)
-    }
+    this._lecturers.push(lecturer)
   }
 
   removeLecturer(lecturer: Lecturer): void {
